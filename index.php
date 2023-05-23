@@ -126,8 +126,6 @@ $categoryList = $categoryModel->getAllCategories();
                 ?> -->
             </div>
         </div>
-
-
     </div>
     
     <!-- Modal -->
