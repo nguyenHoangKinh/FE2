@@ -4,7 +4,8 @@ const detail = document.querySelector('.product_detail');
 const str = document.querySelector('#search');
 const boxSearch = document.querySelector('.boxSearch');
 const modal = new bootstrap.Modal(document.querySelector('#exampleModal'));
-
+const productNameModel = document.querySelector('#exampleModal');
+let lastState;
 btnGetProducts.addEventListener('click', function () {
     getAllProducts();
 })
@@ -58,16 +59,25 @@ async function getProductDetail($id) {
     modal.show();
     
     const modalBody = document.querySelector('.modal-body');
+
     modalBody.innerHTML = `<img src="./public/images/${result.product_photo}" alt="" class="img-fluid">
     <h1>${result.product_name}</h1>
     <p>${result.product_price}</p>
     <p>${result.product_description}</p>`;
-    detail.innerHTML = `<img src="./public/images/${result.product_photo}" alt="" class="img-fluid">
-    <h1>${result.product_name}</h1>
-    <p>${result.product_price}</p>
-    <p>${result.product_description}</p>`;
-}
 
+    lastState = window.location.pathname;
+    history.pushState({}, "", "product.php?id=" + result.id);
+    
+    //hien thi tren chi tiet san pham 
+    // detail.innerHTML = `<img src="./public/images/${result.product_photo}" alt="" class="img-fluid">
+    // <h1>${result.product_name}</h1>
+    // <p>${result.product_price}</p>
+    // <p>${result.product_description}</p>`;
+}
+const myModalLEL = document.querySelector("#exampleModal");
+myModalLEL.addEventListener("hide.bs.modal", (event) => {
+  history.pushState({}, "", lastState);
+});
 async function getSearch(str) {
     //B1: Gui yeu cau
     const url = 'getsearch.php';
