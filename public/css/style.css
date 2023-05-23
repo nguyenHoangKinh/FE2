@@ -1,0 +1,62 @@
+.loader {
+    width: 320px;
+    height: 320px;
+    position: relative;
+    left: 200px;
+    top: 200px;
+    animation: spin 4s infinite linear;
+    display: none;
+}
+.cricle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: blue;
+    border-radius: 50%;
+}
+.cricle:first-child {
+    animation: move1 0.5s infinite alternate-reverse;
+}
+.cricle:nth-child(2) {
+    background-color: red;
+    left: 200px;
+    animation: move2 0.5s infinite alternate-reverse;
+}
+.cricle:nth-child(3) {
+    background-color: yellow;
+    top: 200px;
+    animation: move3 0.5s infinite alternate-reverse;
+}
+.cricle:nth-child(4) {
+    background-color: aqua;
+    left: 200px;
+    top: 200px;
+    animation: move4 0.5s infinite alternate-reverse;
+}
+@keyframes spin {
+    0% {transform: rotate(0);}
+    21% {transform: rotate(90deg);}
+    25% {transform: rotate(90deg);}
+    46% {transform: rotate(180deg);}
+    50% {transform: rotate(180deg);}
+    71% {transform: rotate(270deg);}
+    75% {transform: rotate(270deg);}
+    96% { transform: rotate(360deg);}
+    100% { transform: rotate(360deg);}
+}
+@keyframes move1 {
+    0% { transform: translateX(0px)}
+    100% { transform: translateX(30px) translateY(30px); }
+}
+@keyframes move2 {
+    0% { transform: translateX(0px)}
+    100% { transform: translateX(-30px) translateY(30px); }
+}
+@keyframes move3 {
+    0% { transform: translateX(0px)}
+    100% { transform: translateX(30px) translateY(-30px); }
+}
+@keyframes move4 {
+    0% { transform: translateX(0px)}
+    100% { transform: translateX(-30px) translateY(-30px); }
+}
